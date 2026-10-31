@@ -1,0 +1,49 @@
+{
+  "name": "pi-intent",
+  "version": "0.1.0",
+  "description": "Intent UX and design strategy skills and agents adapted for pi.",
+  "license": "CC0-1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "agents",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "ux",
+    "design"
+  ],
+  "packageManager": "pnpm@12.10.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs && mise exec -- uv run --locked --python python python -B -m pytest",
+    "lint": "oxlint --deny-warnings tests skills/wireframe/references/viewer.js && mise exec -- ruff check skills/present/references/build_deck.py tests/present",
+    "lint:fix": "oxlint --fix --deny-warnings tests skills/wireframe/references/viewer.js && mise exec -- ruff check --fix skills/present/references/build_deck.py tests/present",
+    "typecheck": "mise exec -- uv run --locked --python python ty check skills/present/references/build_deck.py tests/present",
+    "format": "biome format --write . && mise exec -- ruff format skills/present/references/build_deck.py tests/present",
+    "format:check": "biome format . && mise exec -- ruff format --check skills/present/references/build_deck.py tests/present",
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm test"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ],
+    "subagents": {
+      "agents": [
+        "./agents"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.4",
+    "@types/node": "24.19.2",
+    "oxlint": "1.90.0",
+    "oxlint-tsgolint": "7.0.2005"
+  }
+}

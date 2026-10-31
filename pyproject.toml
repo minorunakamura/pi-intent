@@ -1,0 +1,15 @@
+[project]
+name = "pi-intent"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = ["python-pptx>=1.0.2,<2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/present"]
+pythonpath = ["skills/present/references"]
+addopts = "-ra"
+
+[dependency-groups]
+dev = [
+    "pytest>=9,<10",
+]

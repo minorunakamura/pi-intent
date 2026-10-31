@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "options": {
+    "typeAware": true
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "categories": {
+    "correctness": "error"
+  }
+}
